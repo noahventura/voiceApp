@@ -39,7 +39,6 @@ You can customize and expand the list of supported voice commands and actions by
 
 - None for the core functionality. The sample code uses the `SpeechRecognition` API, which is built into modern browsers.
 
-## License
 
 
 
