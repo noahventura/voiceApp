@@ -1,3 +1,11 @@
+const commands =   {
+  1: "\"Open: \" - Opens webiste. Ex. \"Open twitter.com\"=> Loads twitter.com.",
+  2: "\"Change background to: \" - Changes background colour.",
+  3: "\"Tell me a joke\" - Tells a joke." ,
+  4: "\"Search for: \" - Performs a Google search." ,
+  5: "\"What time is it?\" - Displays local time for user." ,
+}
+
 function startListening() {
   // Check if SpeechRecognition is available
   var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -63,3 +71,25 @@ function getTime() {
     return ('An error occurred: ' + event.error)
   };
 }
+
+function getQuestions() {
+  const questions = Object.values(commands);
+  const formattedQuestions = questions.map((question, index) => {
+    return `${index + 1}. ${question}`;
+  }).join('\n');
+
+  // Customize the alert box
+  const customAlert = document.createElement('div');
+  customAlert.classList.add('customAlert');
+  const customAlertContent = document.createElement('div');
+  customAlertContent.classList.add('customAlertContent');
+  customAlertContent.innerHTML = `<p>Here are some questions you can ask:</p><pre>${formattedQuestions}</pre><button id="closeCustomAlert">Close</button>`;
+  customAlert.appendChild(customAlertContent);
+  document.body.appendChild(customAlert);
+
+  const closeCustomAlertButton = document.getElementById('closeCustomAlert');
+  closeCustomAlertButton.addEventListener('click', () => {
+    document.body.removeChild(customAlert);
+  });
+}
+
