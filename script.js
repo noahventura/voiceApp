@@ -14,7 +14,6 @@ function startListening() {
     return;
   }
 
-
   // Create a new instance of SpeechRecognition
   var recognition = new SpeechRecognition();
   recognition.lang = 'en-US'; // Set the language
@@ -30,7 +29,7 @@ recognition.onresult = function(event) {
   // Custom Commands
   if (transcript.toLowerCase().startsWith('open ')) {
     window.open('http://' + transcript.slice(5));
-  } else if (transcript.toLowerCase().startsWith('change background to ') || transcript.toLowerCase().startsWith('change background to ')) {
+  } else if (transcript.toLowerCase().startsWith('change background to ')) {
     document.body.style.backgroundColor = transcript.slice(21);
   } else if (transcript.toLowerCase() === 'tell me a joke') {
     document.getElementById('output').innerHTML = 'Why don’t scientists trust atoms? Because they make up everything!';
