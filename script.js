@@ -70,19 +70,18 @@ function getTime() {
     return ('An error occurred: ' + event.error)
   };
 }
-
 function getQuestions() {
   const questions = Object.values(commands);
   const formattedQuestions = questions.map((question, index) => {
-    return `${index + 1}. ${question}`;
-  }).join('\n');
+    return `<li>${index + 1}. ${question}</li>`;
+  }).join('');
 
   // Customize the alert box
   const customAlert = document.createElement('div');
   customAlert.classList.add('customAlert');
   const customAlertContent = document.createElement('div');
   customAlertContent.classList.add('customAlertContent');
-  customAlertContent.innerHTML = `<p>Here are some questions you can ask:</p><pre>${formattedQuestions}</pre><button id="closeCustomAlert">Close</button>`;
+  customAlertContent.innerHTML = `<p>Here are some questions you can ask:</p><ul>${formattedQuestions}</ul><button id="closeCustomAlert">Close</button>`;
   customAlert.appendChild(customAlertContent);
   document.body.appendChild(customAlert);
 
@@ -91,4 +90,5 @@ function getQuestions() {
     document.body.removeChild(customAlert);
   });
 }
+
 
